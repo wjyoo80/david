@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>랜덤 이미지와 문구</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .image-container {
+            position: relative;
+            max-width: 90%;
+            height: auto;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        h2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-shadow: 1px 1px 2px black; /* 텍스트 가독성을 위해 그림자 추가 */
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        <img id="randomImage" src="" alt="랜덤 이미지">
+        <h2 id="randomText"></h2>
+    </div>
+    <button onclick="displayRandom()">새로 고침</button>
+
+    <script>
+        const images = [
+            'https://picsum.photos/720/1280',
+        ];
+
+        const texts = [
+            '최근 가장 하고 싶은 일이 있나요? 왜 아직 그 일을 하지 않았나요?',
+            '지금 가장 가고싶은 곳은 어디인가요? 그곳에서 무엇을 하고 싶은가요?',
+            '당신이 오늘까지만 살 수 있다면, 어떤 말을 하지 못한 것을 가장 후회할까요? 왜 그 말을 하지 않았나요?',
+            '당신이 이제 1년만 더 살 수 있다면, 당신의 삶에서 어떤 변화를 줄 건가요? 이유는 무엇인가요?',
+            '오늘 당신의 삶 속에서 감사하다고 생각하는 것은 무엇인가요?',
+            '나의 성격을 한마디로 표현하자면? 그렇게 표현한 이유는?',
+            '최근 일주일간 내가 가장 많이 느낀 감정은 무엇인가요?',
+            '오늘 하루 당신의 시간은 충분했나요, 부족했나요? 그 이유는 무엇인가요?',
+            '요즘 당신이 가장 듣고 싶은 말은?',
+            '요즘 나의 부모님을 떠올릴 때 생각나는 단어는? 그 이유는 무엇인가요?',
+            '지금의 나에게 해주고 싶은 조언은 무엇인가요?',
+            '최근 일주일간 나의 가장 큰 고민은 무엇인가요?',
+            '다른 사람이 부러울 때는 언제인가요?',
+            '현재 당신의 마음은 부유한가요, 가난한가요? 왜 그렇게 생각하시나요?',
+            '“나는 지금 (         )하다.”라는 문장에서 (괄호) 안에 들어갈 단어 3가지를 이야기해 주세요.',
+            '최근 나에게 가장 소중한 것은 무엇인가요?  ex) 부모님, 친구, 돈, 행복, 건강, 성적, 꿈 등',
+            '오늘부터 일주일 동안 공부도, 어떤 의무도 없다고 한다면 빈 시간 동안 무엇을 하고 싶은가요?',
+            '오늘 저녁, 지구에 존재하는 누구와도 식사할 수 있다면, 누구를 선택하시겠나요? 그 이유는?',
+            '“나는 요즘 (         )을(를) 함께 할 친구가 있으면 좋겠다.”라는 문장을 완성해보세요.',
+            '요즘 내가 친하게 지내는 친구 1명을 소개하고, 왜 친하게 됐는지 설명해주세요.',
+            '지금 이순간, 가장 나다운 모습을 한다면 어떤 모습일까요?',
+            '오늘이 내 인생에서 기억할만한 특별한 하루가 될거라면, 지금 어떤 일이 일어나야 할까요?',
+        ];
+
+        function displayRandom() {
+            const randomImage = images[Math.floor(Math.random() * images.length)];
+            const randomText = texts[Math.floor(Math.random() * texts.length)];
+
+            document.getElementById('randomImage').src = randomImage;
+            document.getElementById('randomText').innerText = randomText;
+        }
+
+        // 초기 랜덤 값 표시
+        displayRandom();
+    </script>
+
+</body>
+</html>

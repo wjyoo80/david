@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>랜덤 이미지와 문구</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .image-container {
+            position: relative;
+            max-width: 90%;
+            height: auto;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        h2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-shadow: 1px 1px 2px black; /* 텍스트 가독성을 위해 그림자 추가 */
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        <img id="randomImage" src="" alt="랜덤 이미지">
+        <h2 id="randomText"></h2>
+    </div>
+    <button onclick="displayRandom()">새로 고침</button>
+
+    <script>
+        const images = [
+            'https://picsum.photos/720/1280',
+        ];
+
+        const texts = [
+        '부모님에게 감사한 일 한 가지를 말해본다면? (어떤 말을 하면 부모님께 가장 큰 선물을 받아낼 수 있을지 생각)',
+        '가족과의 추억 중 가장 인상깊었던 추억은?',
+        '(엄마가 안듣는다고 생각하고) 엄마에게 하고싶은 말은?',
+        '(아빠가 안듣는다고 생각하고) 아빠에게 하고싶은 말은?',
+        '가족끼리 함께한 여행 중 가장 기억에 남는 곳은 어디인가요?',
+        '형제자매와 가장 웃겼던 일화는 무엇인가요?',
+        '가족의 어떤 점이 가장 자랑스러운가요?',
+        '내가 가족에게 주고 싶은 선물은? (가족을 위해 기여하고 싶은 부분은?)',
+        '나의 가족이 나를 어떻게 생각하면 좋겠는지? ex) 듬직, 성실, 착해, 밝아 등',
+        '가족과 함께 만들어보고 싶은 특별한 전통이 있다면?',
+        ];
+
+        function displayRandom() {
+            const randomImage = images[Math.floor(Math.random() * images.length)];
+            const randomText = texts[Math.floor(Math.random() * texts.length)];
+
+            document.getElementById('randomImage').src = randomImage;
+            document.getElementById('randomText').innerText = randomText;
+        }
+
+        // 초기 랜덤 값 표시
+        displayRandom();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>랜덤 이미지와 문구</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .image-container {
+            position: relative;
+            max-width: 90%;
+            height: auto;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        h2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-shadow: 1px 1px 2px black; /* 텍스트 가독성을 위해 그림자 추가 */
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        <img id="randomImage" src="" alt="랜덤 이미지">
+        <h2 id="randomText"></h2>
+    </div>
+    <button onclick="displayRandom()">새로 고침</button>
+
+    <script>
+        const images = [
+            'https://picsum.photos/720/1280',
+        ];
+
+        const texts = [
+        '년 뒤에도 당신 옆에 있을 것 같은 친구는 누가 있나요?',
+        '미래에는 어떤 사람이 인정받을 것 같나요? 그 이유는?',
+        '나의 묘비명에 대해 1분 동안 생각해봅시다. ㅇㅇㅇㅇ한(했던) 사람이 여기에 잠들다. (이유는?)',
+        '미래에 어떤 집을 갖고 싶나요?',
+        '나의 장례식은 어떤 모습일 것 같나요? 장례식에 온 사람들은 나에 대해 어떤 이야기를 할 것 같나요?',
+        '10년 뒤 난는 어떤 모습일 것 같은가요?',
+        '내 인생 동안 이루지 못하면 후회할 것 같은 것은 무엇인가요?',
+        '미래에 당신이 엄청난 부자라면 무엇을 하고 싶나요?',
+        '당신의 노년에 당신 곁에는 어떤 사람이 있을 것 같나요? 그 사람과 당신은 무엇을 하고 있나요?',
+        '다음의 두 가지 문장을 완성해 주세요. ‘나는        이(가) 되고 싶다. 나는         을(를) 위해 살고 싶다.',
+        '나의 미래를 위해 무엇을 준비하고 있나요?',
+        '당신이 지금 갖고 있는 것 중 하나를 미래의 당신에게 줄 수 있다면 무엇을 줄 건가요?',
+        '돈, 건강, 사랑 중 하나를 포기해야 한다면 어떤 것을 포기할 것인가요? 그 이유는?',
+        '나의 미래를 내다볼 수 있는 거울이 있다면 무엇을 보고 싶은가요? 그 이유는 무엇인가요?',
+        '직업이나 일을 내가 원하는대로 고를 수 있다면 어떤 일을 하고 싶은가요?',
+        '살면서 꼭 해보고 싶은 버킷리스트 중 3가지만 이야기해 주세요.',
+        '내 인생 동안 이루지 못하면 후회할 것 같은 것은 무엇인가요?',
+        '내가 좋아하는 일과 다른 사람이 잘 한다고 인정해 주는 일, 둘 중 어떤 일을 하며 살고 싶나요?',
+        '나의 미래 중 가장 걱정되는 것은 무엇인가요?',
+        '미래 당신의 집에 꼭 있었으면 하는 3가지를 말해보세요.',
+        '내가 이룬 업적으로 다른 사람들에게 기억되고 싶은 것은?',
+        '미래의 내 자녀들에게 꼭 전하고 싶은 삶의 교훈은?',
+        ];
+
+        function displayRandom() {
+            const randomImage = images[Math.floor(Math.random() * images.length)];
+            const randomText = texts[Math.floor(Math.random() * texts.length)];
+
+            document.getElementById('randomImage').src = randomImage;
+            document.getElementById('randomText').innerText = randomText;
+        }
+
+        // 초기 랜덤 값 표시
+        displayRandom();
+    </script>
+
+</body>
+</html>
