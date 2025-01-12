@@ -79,7 +79,10 @@
             const randomText = texts[Math.floor(Math.random() * texts.length)];
 
             document.getElementById('randomImage').src = randomImage;
-            document.getElementById('randomText').innerText = randomText;
+            setTimeout(() => {
+                const randomText = texts[Math.floor(Math.random() * texts.length)];
+                document.getElementById('randomText').innerText = randomText;
+            }, 2000);
         }
 
         // 초기 랜덤 값 표시
