@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조편성</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .image-container {
+            position: relative;
+            max-width: 90%;
+            height: auto;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        h2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-shadow: 1px 1px 2px black; /* 텍스트 가독성을 위해 그림자 추가 */
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        <img id="randomImage" src="" alt="랜덤 이미지">
+        <h2 id="randomText"></h2>
+    </div>
+
+    <script>
+        const images = [
+            'https://picsum.photos/720/1280',
+        ];
+
+        const texts = [
+            '6조',
+        ];
+
+        function displayRandom() {
+            const randomImage = images[Math.floor(Math.random() * images.length)];
+            const randomText = texts[Math.floor(Math.random() * texts.length)];
+
+            document.getElementById('randomImage').src = randomImage;
+            setTimeout(() => {
+                const randomText = texts[Math.floor(Math.random() * texts.length)];
+                document.getElementById('randomText').innerText = randomText;
+            }, 2000);
+        }
+
+        // 초기 랜덤 값 표시
+        displayRandom();
+    </script>
+
+</body>
+</html>
