@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worship List</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+        .image-container {
+            position: relative;
+            max-width: 90%;
+            width: 720px;
+            height: auto;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+        .text-box {
+            width: 90%;
+            max-width: 720px;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.9);
+            border: 1px solid #444;
+            border-radius: 8px;
+            box-sizing: border-box;
+            /* max-height: 50vh; */
+            overflow-y: auto;
+            color: #fff;
+        }
+        .text-box pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- <div class="image-container">
+        <img id="randomImage" src="" alt="랜덤 이미지">
+    </div> -->
+    <div class="text-box">
+        <pre id="randomText"></pre>
+    </div>
+
+    <script>
+        // const images = [
+        //     'https://picsum.photos/720/1280',
+        // ];
+
+        const texts = [
+            `
+사랑한다 말하시네
+
+아무런 자격도 없는 나를 위해
+아무런 소망도 없는 나를 위해
+사랑한다, 사랑한다
+사랑한다 말하시네
+이 낮은 날 위해
+
+나의 사랑, 나의 어여쁜 자야
+일어나 손을 잡고 함께 가자
+사랑한다, 사랑한다
+사랑한다 말하시네
+세상 끝 날까지
+
+이제 나는 옛사람 아니요
+사망에서 건지신 주의 자녀이니
+그 한없는 주의 사랑 안에
+기쁨으로 걸어가겠네
+            `,
+            `
+나의 가장 낮음 마음
+
+나의 가장 낮은 마음
+주님께서 기뻐하시고
+작는 일에 큰 기쁨을 느끼게하시는 도다
+내가 지쳐 무력할때
+주님 내게 힘이 되시고
+아름다운 하늘나라
+내맘에 주시는 도다
+우리에게 축복하신 하나님 사랑
+낮은 자를 높여주시고
+아름다운 하늘 나라 하락하시고
+내모든것 예비하시네
+찬양함에 기쁨을
+감사함이 평안을
+간구함에 하나님 알도록하셨네
+            `,
+            `
+우리가 노래하는 이유
+
+우리 서로 다른 모습으로 다른 생각을 하고
+다른 추억 속에 살아왔지만
+이젠 하나님의 계획 안에 서로가 친구가 되어
+같은 추억 속에 함께 이 노래를 부르네
+
+힘들고 아팠던 그 모든 시간들
+다 이기고 이렇게 함께 선 우리들
+이젠 모든 것이 추억이 되어
+우리가 걸어갈 그 길을 비춰주리
+
+우리가 노래하는 이유 우리가 기뻐하는 이유
+서로 다른 모습이지만 우리가 하나 될 수 있는 이유
+
+우리가 춤을 추는 이유 우리가 손을 드는 이유
+우리 위해 생명 주신 바로 그 분 그 분의 사랑 때문에
+
+힘들고 아팠던 그 모든 시간들
+다 이기고 이렇게 함께 선 우리들
+크신 하나님의 사랑 안에서 이제는 우리가 서로를 비춰주리
+
+우리가 노래하는 이유 우리가 기뻐하는 이유
+서로 다른 모습이지만 우리가 하나 될 수 있는 이유
+
+우리가 춤을 추는 이유 우리가 손을 드는 이유
+우리 위해 생명 주신 바로 그 분 그 분의 사랑 때문에
+
+서로 각자가 다른 모습이긴 하나
+예수 그리스도 안에서 우리들은 하나
+수많은 죄악의 유혹과 고난 역경 환란으로 어두웠던
+내 삶 속에 환한 빛으로 오신 예수님만을
+노래하고 춤추는 난 예수쟁이, This is my destiny
+어떤 것으로도 채울 수 없어 그 크신 하나님의 사랑 셀 수 없어
+(that's right)
+
+우리가 노래하고 춤 추는 가장 큰 이유
+거룩한 신랑의 영원한 짝 최고의 신부
+나 무엇과도 바꾸지 않으리 한가지 믿음
+이 노래 듣고 부르는 모든 자들에게 치유를
+
+(예수 그리스도) 오직 주의 이름만
+(예수 그리스도) 그 분의 사랑을 난 노래해
+(예수 그리스도) 나의 찬양과 감사를 주께
+(예수 그리스도) 주님을 사랑해요 그대만을
+(예수 그리스도) 너와 나를 향한 주의 사랑
+(예수 그리스도) 영원히 높임을 받으실 그 이름
+(예수 그리스도) hu
+그 분의 사랑 그 사랑 때문에
+            `,
+            `
+마음의 예배
+
+찬양의 열기 모두 끝나면 주 앞에 나와
+더욱 진실한 예배 드리네
+주님을 향한 노래 이상의 노래
+내 마음 깊은 곳에 주께서 원하신 것
+화려한 음악보다 뜻 없는 열정보다
+중심을 원하시죠
+
+주님께 드릴 맘의 예배
+주님을 위한 주님을 향한 노래
+중심 잃은 예배 내려놓고
+이제 나 돌아와 주님만 예배해요
+
+영원하신 왕 표현치 못할 주님의 존귀
+가난할때도 연약할때도
+주 내 모든 것 노래 이상의 노래
+내 마음 깊은 곳에 주께서 원하신 것
+화려한 음악보다 뜻 없는 열정보다
+중심을 원하시죠
+
+주님께 드릴 맘의 예배
+주님을 위한 주님을 향한 노래
+중심 잃은 예배 내려놓고
+이제 나 돌아와 주님만 예배해요
+
+(내 삶의 이유라)
+내 평생에 그 이름을 그의 선하심을
+세상에 노래합니다
+그 이름의 크신 능력 영원한 생명이
+내 삶의 이유라
+            `,
+            `
+나 주님을 모른다 하여도
+
+주의 사랑 항상 내 곁에 머무시네
+나 주님을 모른다 하여도
+주의 사랑 또 나를 믿어주시네
+나 주님을 모른다 하여도
+
+주의 사랑 항상 내 곁에 머무시네
+주님만이 피난처 되시네
+주의 사랑 또 나를 믿어주시네
+주님만이 내 소망되시네
+
+고백합니다 주를 사랑합니다
+온 마음 다하여 주를 사랑합니다
+엎드립니다 주를 경배합니다
+신실한 그 사랑으로 나를 채워주소서
+
+주의 사랑 날 포기치 않네
+변함없으신 그 사랑
+나도 주님을 놓지 않겠네
+부족한 입술로 주 찬양하리라
+            `,
+            `
+나는 보기 원하네
+
+나는 보기 원하네 하나님의 어린양
+나를 대신하여 죽으신 하나님의 어린양
+나를 구원하신 분 영원한 목자되신 분
+시온산 위에 있는 어린양 그 분을 보기 원하네
+
+나는 보기 원하네 흰 옷 입은 사람들
+어린양이 어디로 가든지 따라가는 사람들
+나의 영원한 소원 있네 그분을 따라 가는 것
+흰 옷 입은 사람들 그들과 나도 있길 원하네
+
+나는 보기 원하네 주의 능력의 날을
+거룩한 옷을 입고 기쁨으로 주께 달려 나가는
+새벽 이슬 같은 청년들 그들을 보기 원하네
+시온 산 위에 있는 사람들 나는 보기 원하네
+            `,
+            `
+나로부터 시작되리
+
+저 높은 하늘위로 밝은 태양 떠오르듯이
+난 주저앉지 않으리
+어떤 어려움에도 주의 길을 선택하리
+빛 가운데로 걸으리
+주님을 크게 보는 믿음가지고
+세상에 나타내리라 놀라운 주의 사랑을
+
+주의 꿈을 안고 일어나리라
+선한 능력으로 일어나리라
+이땅의 부흥과 회복은 바로 나로부터 시작되리
+주의 꿈을 안고 일어나리라
+선한 능력으로 일어나리라
+이땅의 부흥과 회복은 바로 나로부터 시작되리
+            `,
+        ];
+
+        function displayRandom() {
+            // const randomImage = images[Math.floor(Math.random() * images.length)];
+            // const randomText = texts[Math.floor(Math.random() * texts.length)];
+
+            // document.getElementById('randomImage').src = randomImage;
+            setTimeout(() => {
+                const randomText = texts[Math.floor(Math.random() * texts.length)];
+                document.getElementById('randomText').innerText = randomText;
+            }, 100);
+        }
+
+        // 초기 랜덤 값 표시
+        displayRandom();
+    </script>
+
+</body>
+</html>
